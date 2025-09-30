@@ -32,13 +32,20 @@ def user_profile(username):
     <a href="/user/bob">Bob</a>
  </nav>    
 '''
- 
+operations = []
 @app.route("/calc/<int:num1>/<operation>/<int:num2>")
 def calculator(num1,operation,num2):
-    if operation in operations:
+    if operations in operation:
         result = operations[operation]
     return f"{num1} {operation} {num2} = "
 if __name__ == "__main__":
     app.run(debug=True)
 
+@app.route("/temp/<degree>/<int: temp>")
+
+def converter(temp, degree):
+    if  degree.lower() == 'c':
+        return f'''<h1>{(temp-32)*(5/9)}</h1>'''
+    else:
+        return f'''<h1>{temp*(9/5)+32}</h1>'''
 
